@@ -32,7 +32,7 @@ jobs:
       env:
         SUPER_SECRET: ${{ secrets.DOCKERHUB_USERNAME }}
       run: |
-        example-command "$env:SUPER_SECRET"
+        write-output "$env:SUPER_SECRET"
     - uses: actions/checkout@v3
     - name: Docker Login
       uses: docker/login-action@v2.1.0
