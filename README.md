@@ -15,7 +15,7 @@ Current configuration of this service deploys an application that helps in vizua
 This application needs Admin rights on cluster, for same we will create a ServiceAccount (sa) with Admin ClusterRole
 
 ### Creating SA
-Run the following script for creating a new Storage account with Name admin
+Run the following script for creating a new Service Account with Name admin
 ```
 kubectl apply -f - <<EOF
 apiVersion: v1
