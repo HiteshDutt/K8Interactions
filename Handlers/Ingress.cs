@@ -7,9 +7,8 @@ namespace Handlers
     {
         private readonly Kubernetes client;
 
-        public Ingress()
+        public Ingress(KubernetesClientConfiguration config)
         {
-            var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
             client = new Kubernetes(config);
         }
 

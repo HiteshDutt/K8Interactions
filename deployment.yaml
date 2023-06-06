@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: k8-deployment
+  name: k8-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8-deployment
+  template:
+    metadata:
+      labels:
+        app: k8-deployment
+    spec:
+      containers:
+        - image: hiteshdutt/k8interaction:6
+          name: k8-deployment
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              cpu: "500m"
+              memory: 500Mi
+            requests:
+              cpu: "250m"
+              memory: 250Mi
+      serviceAccountName: admin
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: k8-deployment-svc
+  labels:
+    run: k8-deployment
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+  selector:
+    app: k8-deployment
+  type: ClusterIP

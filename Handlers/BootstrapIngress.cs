@@ -1,9 +1,17 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using k8s;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Handlers
 {
     public static class BootstrapIngress
     {
+        public static void ConnectToKubernetes(this IServiceCollection services)
+        {
+            var config = KubernetesClientConfiguration.InClusterConfig();
+
+            services.AddSingleton(config);
+
+        }
         public static void InitializeIngress(this IServiceCollection services)
         {
             services.AddSingleton<IIngress, Ingress>();

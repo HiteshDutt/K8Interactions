@@ -8,9 +8,8 @@ namespace Handlers
     {
         private readonly Kubernetes client;
 
-        public Deployment()
+        public Deployment(KubernetesClientConfiguration config)
         {
-            var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
             client = new Kubernetes(config);
         }
 

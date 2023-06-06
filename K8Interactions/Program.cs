@@ -4,6 +4,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+builder.Services.ConnectToKubernetes();
 builder.Services.InitializeIngress();
 builder.Services.InitializeDeployment();
 builder.Services.InitializeService();

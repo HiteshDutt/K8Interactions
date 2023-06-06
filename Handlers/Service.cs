@@ -6,9 +6,8 @@ namespace Handlers
     internal class Service : IService
     {
         private readonly Kubernetes client;
-        public Service()
+        public Service(KubernetesClientConfiguration config)
         {
-            var config = KubernetesClientConfiguration.BuildConfigFromConfigFile();
             client = new Kubernetes(config);
         }
 
