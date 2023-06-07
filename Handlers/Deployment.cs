@@ -1,5 +1,4 @@
-﻿using System.Data;
-using k8s;
+﻿using k8s;
 using k8s.Models;
 
 namespace Handlers
