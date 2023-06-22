@@ -95,7 +95,7 @@ namespace Handlers
                                     Name = "pvc-blobfuse",
                                     PersistentVolumeClaim = new V1PersistentVolumeClaimVolumeSource
                                     {
-                                        ClaimName = "pvc3-blob"
+                                        ClaimName = "pvc-blob"
                                     }
                                 }
                             },

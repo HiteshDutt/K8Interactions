@@ -1,4 +1,5 @@
-﻿using Handlers;
+﻿using System.Text.Encodings.Web;
+using Handlers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace K8Interactions.Controllers
@@ -16,8 +17,9 @@ namespace K8Interactions.Controllers
         [HttpPost("CreateDeployment/{imagePathRelative}")]
         public async Task<IActionResult> CreateDeployment(string imagePathRelative)
         {
+            var parsedPath = Uri.UnescapeDataString(imagePathRelative);
             var newDeploymentName = $"threed-{Guid.NewGuid()}".ToLowerInvariant();
-            await deployment.CreateDeploymentAsync("3dviz", newDeploymentName, imagePathRelative);
+            await deployment.CreateDeploymentAsync("3dviz", newDeploymentName, parsedPath);
             return Ok(newDeploymentName);
         }
 
