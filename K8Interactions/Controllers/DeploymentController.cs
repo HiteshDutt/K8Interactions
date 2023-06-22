@@ -17,14 +17,14 @@ namespace K8Interactions.Controllers
         public async Task<IActionResult> CreateDeployment(string imagePathRelative)
         {
             var newDeploymentName = $"threed-{Guid.NewGuid()}".ToLowerInvariant();
-            await deployment.CreateDeploymentAsync("default", newDeploymentName, imagePathRelative);
+            await deployment.CreateDeploymentAsync("3dviz", newDeploymentName, imagePathRelative);
             return Ok(newDeploymentName);
         }
 
         [HttpPost("deletedeployment/{deploymentName}")]
         public async Task<IActionResult> DeleteDeployment(string deploymentName)
         {
-            await deployment.RemoveDeploymentAsync("default", deploymentName);
+            await deployment.RemoveDeploymentAsync("3dviz", deploymentName);
             return Ok();
         }
     }

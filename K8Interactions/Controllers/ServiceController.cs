@@ -19,14 +19,14 @@ namespace K8Interactions.Controllers
         public async Task<IActionResult> Post(string appName)
         {
             var newServiceName = $"{appName}-svc";
-            await service.CreateServiceAsync("default", newServiceName, appName);
+            await service.CreateServiceAsync("3dviz", newServiceName, appName);
             return Ok(newServiceName);
         }
 
         [HttpDelete("RemoveService/{serviceName}")]
         public async Task<IActionResult> Delete(string serviceName)
         {
-            await service.RemoveServiceAsync("default", serviceName);
+            await service.RemoveServiceAsync("3dviz", serviceName);
             return Ok();
         }
     }

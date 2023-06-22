@@ -18,21 +18,21 @@ namespace K8Interactions.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public IActionResult Get()
         {
-            return Ok(ingress.GetIngressAsync("default", "threed-ingress"));
+            return Ok(ingress.GetIngressAsync("3dviz", "threed-ingress"));
         }
 
         [HttpPost("AddRule/{serviceName}")]
         public async Task<IActionResult> Post(string serviceName)
         {
             var newRuleName = $"threed-{Guid.NewGuid()}";
-            var value = await ingress.AddRuleAsync("default", "threed-ingress", newRuleName, serviceName);
+            var value = await ingress.AddRuleAsync("3dviz", "threed-ingress", newRuleName, serviceName);
             return Ok(value);
         }
 
         [HttpDelete("RemoveRule/{ruleName}")]
         public async Task<IActionResult> Delete(string ruleName)
         {
-            await ingress.RemoveRuleAsync("default", "threed-ingress", ruleName);
+            await ingress.RemoveRuleAsync("3dviz", "threed-ingress", ruleName);
             return Ok();
         }
     }
