@@ -15,24 +15,24 @@ namespace K8Interactions.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IActionResult Get()
+        [HttpGet("GetIngress/{ingressName}/k8Namespace")]
+        public IActionResult Get(string ingressName, string k8Namespace)
         {
-            return Ok(ingress.GetIngressAsync("3dviz", "threed-ingress"));
+            return Ok(ingress.GetIngressAsync(k8Namespace, ingressName));
         }
 
-        [HttpPost("AddRule/{serviceName}")]
-        public async Task<IActionResult> Post(string serviceName)
+        [HttpPost("AddRule")]
+        public async Task<IActionResult> Post([FromBody] IngressViewModel ingressViewModel)
         {
             var newRuleName = $"threed-{Guid.NewGuid()}";
-            var value = await ingress.AddRuleAsync("3dviz", "threed-ingress", newRuleName, serviceName);
+            var value = await ingress.AddRuleAsync(ingressViewModel.K8Namespace, ingressViewModel.IngressName, newRuleName, ingressViewModel.ServiceName);
             return Ok(value);
         }
 
-        [HttpDelete("RemoveRule/{ruleName}")]
-        public async Task<IActionResult> Delete(string ruleName)
+        [HttpDelete("RemoveRule")]
+        public async Task<IActionResult> Delete([FromBody] IngressViewModel ingressViewModel)
         {
-            await ingress.RemoveRuleAsync("3dviz", "threed-ingress", ruleName);
+            await ingress.RemoveRuleAsync(ingressViewModel.K8Namespace, ingressViewModel.IngressName, ingressViewModel.RuleName);
             return Ok();
         }
     }
