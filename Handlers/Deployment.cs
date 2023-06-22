@@ -102,6 +102,16 @@ namespace Handlers
                             NodeSelector = new Dictionary<string, string>
                             {
                                 { "agentpool","threedpool" }
+                            },
+                            Tolerations = new List<V1Toleration>
+                            {
+                                new V1Toleration
+                                {
+                                    Effect = "NoSchedule",
+                                    Key = "sku",
+                                    OperatorProperty = "Equal",
+                                    Value = "gpu"
+                                }
                             }
                         }
                         
