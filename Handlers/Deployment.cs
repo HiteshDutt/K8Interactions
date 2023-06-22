@@ -49,7 +49,7 @@ namespace Handlers
                                         }
                                     },
                                     Name = $"{appName}-pod",
-                                    Image = "acr615cd13515c55faf8416ace91951b833.azurecr.io/threedvisual/vizer",
+                                    Image = "hiteshdutt/3dviz:5341120867",
                                     Command = new List<string>
                                     {
                                         "/usr/bin/bash",
