@@ -1,1 +1,1 @@
-# Use this sample for execution example
+# Use this sample for example
