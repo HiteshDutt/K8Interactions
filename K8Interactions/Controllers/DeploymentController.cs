@@ -14,7 +14,7 @@ namespace K8Interactions.Controllers
             this.deployment = deployment;
         }
 
-        [HttpPost("CreateDeployment")]
+        [HttpPost]
         public async Task<IActionResult> CreateDeployment([FromBody]DeploymentViewModel input)
         {
             var parsedPath = Uri.UnescapeDataString(input.RelativeImagePath);
@@ -23,7 +23,7 @@ namespace K8Interactions.Controllers
             return Ok(newDeploymentName);
         }
 
-        [HttpDelete("deletedeployment")]
+        [HttpDelete]
         public async Task<IActionResult> DeleteDeployment([FromBody] DeploymentViewModel input)
         {
             await deployment.RemoveDeploymentAsync(input.K8Namespace, input.DeploymentName);
