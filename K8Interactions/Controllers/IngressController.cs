@@ -15,7 +15,7 @@ namespace K8Interactions.Controllers
             _logger = logger;
         }
 
-        [HttpGet("GetIngress/{ingressName}/k8Namespace")]
+        [HttpGet("GetIngress/{ingressName}/{k8Namespace}")]
         public IActionResult Get(string ingressName, string k8Namespace)
         {
             return Ok(ingress.GetIngressAsync(k8Namespace, ingressName));

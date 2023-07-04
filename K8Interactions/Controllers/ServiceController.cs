@@ -15,16 +15,16 @@ namespace K8Interactions.Controllers
             _logger = logger;
         }
 
-        [HttpPost("CreateService")]
-        public async Task<IActionResult> Post([FromBody]ServiceViewModel serviceViewModel)
+        [HttpPost]
+        public async Task<IActionResult> CreateService([FromBody]ServiceViewModel serviceViewModel)
         {
             var newServiceName = $"{serviceViewModel.ApplicationName}-svc";
             await service.CreateServiceAsync(serviceViewModel.K8Namespace, newServiceName, serviceViewModel.ApplicationName);
             return Ok(newServiceName);
         }
 
-        [HttpDelete("RemoveService")]
-        public async Task<IActionResult> Delete([FromBody] ServiceViewModel serviceViewModel)
+        [HttpDelete]
+        public async Task<IActionResult> RemoveService([FromBody] ServiceViewModel serviceViewModel)
         {
             await service.RemoveServiceAsync(serviceViewModel.K8Namespace, serviceViewModel.ServiceName);
             return Ok();
